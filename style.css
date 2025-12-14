@@ -409,9 +409,15 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
     font-size: 22px;
   }
 
+  .muvpic{
+
+    display: flex;
+    justify-content: center;
+  }
+
   .muvpic img{
 
-    width: 100%;
+    width: 85%;
   }
 
   .artist-prev, .artist-next{
@@ -436,6 +442,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   min-width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 /* Gombok */
