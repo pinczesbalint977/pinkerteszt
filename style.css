@@ -13,6 +13,12 @@ section{
 
 
 
+@font-face {
+  font-family: "OldEnglish";
+  src: url("fonts/VTC-BadTattooHandOne.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 
@@ -161,7 +167,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
 
 .title{
 
-    font-family: "Old English Text MT", Georgia, serif;
+    font-family: "OldEnglish", serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -181,7 +187,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
 
 .title h1{
 
-    font-size: 100px;
+    font-size: 120px;
     animation: navEnter 0.8s ease forwards;
 
 }
