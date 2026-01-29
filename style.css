@@ -275,6 +275,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   width: 100%;
   min-height: 100vh;
   display: flex;
+
 }
 
 .lacitext{
@@ -285,20 +286,9 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items:start;
 
 }
-
-.muvpic{
-
-  width: 100%;
-  height: 30vh;
-}
-
-.muvpic img{
-  
-  width: 80%;
-}
-
 
 .lacitextin{
 
@@ -309,6 +299,37 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   padding: 3%;
   text-align: justify;
 }
+
+.laciimg{
+
+  min-height: 100vh;
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background-size: cover;
+  position: relative;
+
+
+}
+
+
+
+.muvpic{
+
+  width: 80%;
+  height: 273px;
+
+}
+
+.muvpic img{
+  
+  width: 100%;
+  height: 90%;
+
+}
+
+
 
 .lacitextin a{
 
@@ -345,18 +366,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   text-align: start;
 }
 
-.laciimg{
 
-  min-height: 100vh;
-  width: 50%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  background-size: cover;
-  position: relative;
-
-
-}
 
 
 .laci2img{
@@ -378,7 +388,7 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
   transform: translateY(-20px) scale(1.25);
 }
 
-@media (max-width: 1070px){
+@media (max-width: 1000px){
 
   .laci{
 
@@ -402,8 +412,13 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
     width: 100%;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: auto;
   }
+  .lacitextin{
+    display: flex;
+    flex-direction: column;
+  }
+
 
   .lacitextin a{
 
@@ -419,11 +434,14 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
 
     display: flex;
     justify-content: center;
+    margin-top: auto;
   }
 
   .muvpic img{
 
-    width: 80%;
+    width: 100%;
+
+  
   }
 
   .artist-prev, .artist-next{
@@ -431,6 +449,19 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
     top: 85% !important;
     font-size: 10px !important;
   }
+}
+
+@media (max-width: 600px){
+
+  .muvpic img{
+
+    width: 100%;
+    height: 140px;
+  
+  }
+
+
+
 }
 
 .artist-carousel {
@@ -442,12 +473,14 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
 .artist-track {
   display: flex;
   transition: transform 0.6s ease-in-out;
+
 }
 
 .artist-slide {
   min-width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 
 }
 
@@ -482,110 +515,144 @@ nav ul li:nth-child(5) { animation-delay: 0.8s; }
 
 
 
-/*Gallery*/
-
-
+/* ================= GALLERY ================= */
 
 .gallery {
-    width: 100%;
-    min-height: 100vh;
-    background: #0e0e0e;
-    padding: 80px 0;
-    color: rgba(255,255,255,0.5);
+  width: 100%;
+  min-height: 100vh;
+  background: #0e0e0e;
+  padding: 80px 0;
+  color: rgba(255,255,255,0.5);
+  overflow: hidden;
 }
 
 .gallery h2 {
-    text-align: center;
-    font-size: 38px;
-    color: #7A0000;
-    margin-bottom: 25px;
+  text-align: center;
+  font-size: 38px;
+  color: #7A0000;
+  margin-bottom: 25px;
 }
 
 .gallery-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
+/* ===== DESKTOP TRACK ===== */
 .gallery-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    padding: 10px 40px;
+  display: flex;
+  gap: 20px;
+  padding: 20px 40px;
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
+/* IMAGES */
 .gallery-track img {
-    height: 250px;
-    width: 250px;
-    border-radius: 12px;
-    flex-shrink: 0;
-    transition: 0.4s ease;
-    object-fit: cover;
+  width: 250px;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  pointer-events: none;
 }
 
 .gallery-track img:hover {
-    transform: scale(1.07);
-    filter: brightness(1.2);
+  transform: scale(1.07);
+  filter: brightness(1.2);
 }
 
+/* ===== NAV BUTTONS (DESKTOP) ===== */
 .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(122, 0, 0, 0.6);
-    border: none;
-    color: white;
-    font-size: 26px;
-    padding: 12px 18px;
-    cursor: pointer;
-    border-radius: 90%;
-    transition: ease 0.3s;
-    z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(122, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 26px;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: ease 0.3s;
 }
 
 .nav-btn:hover {
-    background:#0e0e0e;
-    border: 2px solid #7A0000;
-    transform: translateY(-50%) scale(1.15);
+  background: #0e0e0e;
+  border: 2px solid #7A0000;
+  transform: translateY(-50%) scale(1.15);
 }
 
-.left {
-    left: 10px;
-}
+.left { left: 10px; }
+.right { right: 10px; }
 
-.right {
-    right: 10px;
-}
-
-.media1{
-
+/* ===== SOCIAL ===== */
+.media1 {
   margin-top: 5%;
   display: flex;
   justify-content: space-around;
 }
 
-.media1 svg{
-
+.media1 svg {
   color: #7A0000;
   transition: ease 0.3s;
 }
 
-.media1 svg:hover{
-
+.media1 svg:hover {
   transform: scale(1.1);
 }
 
+/* ===== MOBIL VISSELKEDÉS ===== */
 @media (max-width: 1070px){
 
-  .gallery{
-
+  .gallery {
     min-height: 50vh;
+  }
+
+  .gallery-track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 50vw;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-track img {
+    width: 80vw;
+    height: 80vw;
+    max-width: 300px;
+    max-height: 300px;
+    scroll-snap-align: center;
+  }
+
+  /* GOMBOK ELTŰNNEK */
+  .nav-btn {
+    display: none;
+  }
+
+  /* HÚZHATÓ JELZÉS */
+  .gallery-wrapper::after {
+    content: "← húzd →";
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
   }
 }
 
+/* ===== MÁSOLÁS / DRAG TILTÁS ===== */
+.gallery-track,
+.gallery-track img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
 
-/*Gallery*/
+/* ================= /GALLERY ================= */
 
 
 
