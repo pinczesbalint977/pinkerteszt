@@ -8,10 +8,7 @@ document.querySelectorAll(".gallery-wrapper").forEach(wrapper => {
   const imgWidth = 270; // 250 + gap
   let index = 0;
 
-  function isDesktop() {
-    return window.innerWidth > 1070;
-  }
-
+  /* ===== GOMBOS NAV (NEM VÉGTELEN) ===== */
   function update() {
     track.scrollTo({
       left: index * imgWidth,
@@ -20,26 +17,40 @@ document.querySelectorAll(".gallery-wrapper").forEach(wrapper => {
   }
 
   nextBtn.addEventListener("click", () => {
-    if (!isDesktop()) return;
-
-    index++;
-    if (index >= images.length) index = 0;
-    update();
+    if (index < images.length - 1) {
+      index++;
+      update();
+    }
   });
 
   prevBtn.addEventListener("click", () => {
-    if (!isDesktop()) return;
-
-    index--;
-    if (index < 0) index = images.length - 1;
-    update();
+    if (index > 0) {
+      index--;
+      update();
+    }
   });
 
-  window.addEventListener("resize", () => {
-    if (!isDesktop()) {
-      index = 0;
-      track.scrollTo({ left: 0 });
-    }
+  /* ===== DRAG & MOVE DESKTOP ===== */
+  let isDown = false;
+  let startX;
+  let scrollStart;
+
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX;
+    scrollStart = track.scrollLeft;
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+
+    e.preventDefault();
+    const walk = (e.pageX - startX) * 1.2;
+    track.scrollLeft = scrollStart - walk;
   });
 
 });
@@ -117,3 +128,43 @@ artistPrev.addEventListener('click', () => {
   }
   updateArtistCarousel();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+const items = document.querySelectorAll(".flow-item");
+
+const radius = Math.min(window.innerWidth, window.innerHeight) * 0.25;
+const angleStep = (Math.PI * 2) / items.length;
+
+items.forEach((item, i) => {
+  const angle = i * angleStep;
+
+  const x = Math.cos(angle) * radius;
+  const y = Math.sin(angle) * radius;
+
+  const scale = 0.9 + (i % 5) * 0.05;
+  const rotate = -8 + i * 2;
+
+  item.style.transform = `
+    translate(-50%, -50%)
+    translate(${x}px, ${y}px)
+    scale(${scale})
+    rotate(${rotate}deg)
+  `;
+
+  item.style.zIndex = i;
+});
+
+/* resize fix */
+window.addEventListener("resize", () => location.reload());
+
+
