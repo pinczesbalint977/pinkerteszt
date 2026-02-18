@@ -140,31 +140,5 @@ artistPrev.addEventListener('click', () => {
 
 
 
-const items = document.querySelectorAll(".flow-item");
-
-const radius = Math.min(window.innerWidth, window.innerHeight) * 0.25;
-const angleStep = (Math.PI * 2) / items.length;
-
-items.forEach((item, i) => {
-  const angle = i * angleStep;
-
-  const x = Math.cos(angle) * radius;
-  const y = Math.sin(angle) * radius;
-
-  const scale = 0.9 + (i % 5) * 0.05;
-  const rotate = -8 + i * 2;
-
-  item.style.transform = `
-    translate(-50%, -50%)
-    translate(${x}px, ${y}px)
-    scale(${scale})
-    rotate(${rotate}deg)
-  `;
-
-  item.style.zIndex = i;
-});
-
-/* resize fix */
-window.addEventListener("resize", () => location.reload());
 
 
