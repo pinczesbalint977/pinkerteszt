@@ -59,20 +59,46 @@ document.querySelectorAll(".gallery-wrapper").forEach(wrapper => {
 document.addEventListener("DOMContentLoaded", function () {
 
   const banner = document.getElementById("cookie-banner");
+  const navToggle = document.querySelector(".nav-toggle");
+  const navList = document.querySelector(".nav-list");
+  const navLinks = document.querySelectorAll(".nav-list a");
 
-  if (!localStorage.getItem("cookieChoice")) {
+  if (banner && !localStorage.getItem("cookieChoice")) {
     banner.style.display = "block";
   }
 
-  document.getElementById("cookie-accept").addEventListener("click", function () {
-    localStorage.setItem("cookieChoice", "accepted");
-    banner.style.display = "none";
-  });
+  if (navToggle && navList) {
+    navToggle.addEventListener("click", function () {
+      const isOpen = navList.classList.toggle("is-open");
+      navToggle.classList.toggle("is-active", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
 
-  document.getElementById("cookie-decline").addEventListener("click", function () {
-    localStorage.setItem("cookieChoice", "declined");
-    banner.style.display = "none";
-  });
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navList.classList.remove("is-open");
+        navToggle.classList.remove("is-active");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  const acceptBtn = document.getElementById("cookie-accept");
+  const declineBtn = document.getElementById("cookie-decline");
+
+  if (banner && acceptBtn) {
+    acceptBtn.addEventListener("click", function () {
+      localStorage.setItem("cookieChoice", "accepted");
+      banner.style.display = "none";
+    });
+  }
+
+  if (banner && declineBtn) {
+    declineBtn.addEventListener("click", function () {
+      localStorage.setItem("cookieChoice", "declined");
+      banner.style.display = "none";
+    });
+  }
 
 });
 
@@ -110,24 +136,27 @@ const artistPrev = document.querySelector('.artist-prev');
 let artistIndex = 0;
 
 function updateArtistCarousel() {
+  if (!artistRail) return;
   artistRail.style.transform = `translateX(-${artistIndex * 100}%)`;
 }
 
-artistNext.addEventListener('click', () => {
-  artistIndex++;
-  if (artistIndex >= artistSlides.length) {
-    artistIndex = 0;
-  }
-  updateArtistCarousel();
-});
+if (artistRail && artistSlides.length && artistNext && artistPrev) {
+  artistNext.addEventListener('click', () => {
+    artistIndex++;
+    if (artistIndex >= artistSlides.length) {
+      artistIndex = 0;
+    }
+    updateArtistCarousel();
+  });
 
-artistPrev.addEventListener('click', () => {
-  artistIndex--;
-  if (artistIndex < 0) {
-    artistIndex = artistSlides.length - 1;
-  }
-  updateArtistCarousel();
-});
+  artistPrev.addEventListener('click', () => {
+    artistIndex--;
+    if (artistIndex < 0) {
+      artistIndex = artistSlides.length - 1;
+    }
+    updateArtistCarousel();
+  });
+}
 
 
 
