@@ -1006,10 +1006,16 @@ nav ul li:nth-child(6) { animation-delay: 0.85s; }
   color: rgba(255, 255, 255, 0.68);
 }
 
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
 .lacitextin a {
   width: 200px;
   height: 45px;
-  margin-top: 30px;
   background-color: #7A0000;
   display: inline-flex;
   justify-content: center;
@@ -1145,6 +1151,10 @@ nav ul li:nth-child(6) { animation-delay: 0.85s; }
   .lacitextin a {
     width: 100%;
     max-width: 220px;
+  }
+
+  .about-actions {
+    gap: 10px;
   }
 
   .artist-prev {
